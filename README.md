@@ -5,9 +5,9 @@
 
 | № | Тема | Код | Перегляд онлайн |
 |---|------|-----|-----------------|
-| 1 | Розмітка елементу інтерфейсу засобами HTML | [lab1/site](lab1/site) | [index.html](https://USER.github.io/REPO/lab1/site/index.html) |
-| 2 | Стилізація елементу інтерфейсу засобами CSS | [lab2/site](lab2/site) | [index.html](https://USER.github.io/REPO/lab2/site/index.html) |
-| 3 | Основи, функціональне та ООП мовою JavaScript | [lab3](lab3) | [index.html](https://USER.github.io/REPO/lab3/index.html) |
+| 1 | Розмітка елементу інтерфейсу засобами HTML | [lab1/site](lab1/site) | [index.html](https://labebra.github.io/FRONTLAB/lab1/site/index.html) |
+| 2 | Стилізація елементу інтерфейсу засобами CSS | [lab2/site](lab2/site) | [index.html](https://labebra.github.io/FRONTLAB/lab2/site/index.html) |
+| 3 | Основи, функціональне та ООП мовою JavaScript | [lab3](lab3) | [index.html](https://labebra.github.io/FRONTLAB/lab3/index.html) |
 
 ## Структура
 
