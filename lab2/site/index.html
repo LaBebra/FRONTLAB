@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ательє «Голка &amp; Нитка» — сервісний сайт із пошиття та ремонту одягу">
+  <meta name="keywords" content="ательє, пошиття одягу, ремонт одягу, сукні, костюми, Київ">
+  <meta name="author" content="Михайло Марчук">
+  <title>Голка &amp; Нитка — ательє з пошиття одягу</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Внутрішня таблиця стилів головної сторінки */
+    .home-page .site-header .account-buttons { justify-self: end; }
+    .home-main h2::after { content: " ❦"; color: darkgoldenrod; }
+  </style>
+</head>
+<body class="home-page">
+
+  <header id="site-header" class="site-header">
+    <a href="index.html" class="brand" title="На головну">
+      <img src="images/logo.svg" alt="Логотип ательє «Голка та Нитка»" width="90" height="90">
+    </a>
+    <div class="brand-text">
+      <h1>Голка &amp; Нитка</h1>
+      <p class="slogan"><i>Сервіс індивідуального пошиття та ремонту одягу з 2009 року</i></p>
+    </div>
+    <div class="account-buttons">
+      <button type="button" id="btn-cabinet" title="Вхід до особистого кабінету">Перейти у власний кабінет</button>
+      <button type="button" id="btn-register" title="Створити новий обліковий запис">Зареєструватись</button>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Головне меню">
+    <ul>
+      <li><a href="catalog.html" class="nav-btn">Каталог сервісів</a></li>
+      <li><a href="reviews.html" class="nav-btn">Відгуки про сервіси</a></li>
+      <li><a href="feedback.html" class="nav-btn">Зворотній зв’язок</a></li>
+    </ul>
+  </nav>
+
+  <main id="main" class="home-main">
+
+    <article id="goal" class="goal-block">
+      <h2>Мета створення сайту</h2>
+      <p class="goal-text">
+        Метою створення сервісного сайту ательє «Голка &amp; Нитка» є надання мешканцям міста
+        зручного онлайн-доступу до послуг індивідуального пошиття, перешивання та ремонту одягу:
+        від вибору послуги та тканини до запису на примірку без телефонних дзвінків і черг.
+      </p>
+      <p>Для досягнення мети поставлено такі завдання:</p>
+      <ol type="I">
+        <li>Сформувати каталог сервісів із детальним описом, термінами виконання та вартістю.</li>
+        <li>Забезпечити онлайн-реєстрацію клієнтів та особистий кабінет для відстеження замовлень.</li>
+        <li>Організувати збір відгуків про якість пошиття для постійного вдосконалення сервісу.</li>
+        <li>Налагодити зворотній зв’язок із клієнтами для швидкого вирішення питань і пропозицій.</li>
+      </ol>
+      <p class="styled-sentence">
+        <span>Наше ательє</span> шиє одяг <i>за індивідуальними мірками</i>,
+        використовує <b>лише натуральні тканини</b>, <em>гарантує якість</em> кожного шва
+        та <u>дотримується узгоджених термінів</u>.
+      </p>
+      <p>
+        Перейти до: <a href="#services">таблиці типів сервісів</a> |
+        <a href="#contacts">контактів ательє</a>
+      </p>
+    </article>
+
+    <section id="services" class="services-block">
+      <h2>Загальна інформація про типи сервісів</h2>
+      <table border="1">
+        <caption>Типи сервісів ательє «Голка &amp; Нитка», доступних для замовлення на пошив</caption>
+        <thead>
+          <tr>
+            <th rowspan="2">Категорія</th>
+            <th rowspan="2">Сервіс</th>
+            <th colspan="3">Умови надання</th>
+          </tr>
+          <tr>
+            <th>Рекомендована тканина</th>
+            <th>Термін, днів</th>
+            <th>Вартість від, грн</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="3">Жіночий одяг</td>
+            <td>Пошиття сукні</td>
+            <td>Шовк, віскоза</td>
+            <td>7</td>
+            <td>2 800</td>
+          </tr>
+          <tr>
+            <td>Весільна сукня</td>
+            <td>Атлас, мереживо</td>
+            <td>30</td>
+            <td>15 000</td>
+          </tr>
+          <tr>
+            <td>Вишиванка</td>
+            <td>Льон</td>
+            <td>14</td>
+            <td>3 500</td>
+          </tr>
+          <tr>
+            <td rowspan="2">Чоловічий одяг</td>
+            <td>Класичний костюм</td>
+            <td rowspan="2">Вовна, бавовна</td>
+            <td>21</td>
+            <td>9 500</td>
+          </tr>
+          <tr>
+            <td>Сорочка на замовлення</td>
+            <td>5</td>
+            <td>1 400</td>
+          </tr>
+          <tr>
+            <td>Верхній одяг</td>
+            <td>Пальто</td>
+            <td>Кашемір, драп</td>
+            <td>25</td>
+            <td>8 000</td>
+          </tr>
+          <tr>
+            <td>Ремонт</td>
+            <td>Підшивання, заміна блискавки</td>
+            <td colspan="2">Тканина клієнта, 1–2 дні</td>
+            <td>150</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">Знижка для постійних клієнтів</td>
+            <td>10 %</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+  </main>
+
+  <aside class="about-aside">
+    <h3>Історія ательє</h3>
+    <figure>
+      <img src="images/atelier.svg" alt="Майстерня ательє" width="200" height="140">
+      <figcaption>Наша майстерня на Подолі</figcaption>
+    </figure>
+    <p>
+      Ательє «Голка &amp; Нитка» засноване у 2009 році двома кравчинями, які мали понад
+      двадцять років досвіду роботи в будинках моди. Починали ми з невеликої кімнати та однієї
+      швейної машинки, а сьогодні в нашій команді дванадцять майстрів, конструктор одягу
+      та дизайнер.
+    </p>
+    <p>
+      Щороку ми виготовляємо понад тисячу виробів: від повсякденних суконь і сорочок до
+      складних весільних і вечірніх нарядів. Особливою гордістю є колекція вишиванок,
+      створених за старовинними візерунками Полтавщини та Буковини.
+    </p>
+    <p>
+      Ми працюємо з натуральними тканинами від перевірених постачальників з Італії,
+      Туреччини та України, а кожен виріб проходить щонайменше дві примірки. Саме тому
+      наші клієнти повертаються до нас роками й рекомендують ательє друзям.
+    </p>
+    <p>
+      Корисні ресурси:
+      <a href="https://uk.wikipedia.org/wiki/Ательє" target="_blank" rel="noopener">що таке ательє (Вікіпедія)</a>,
+      <a href="https://www.youtube.com/results?search_query=пошиття+одягу" target="_blank" rel="noopener">відеоуроки з пошиття (YouTube)</a>.
+    </p>
+  </aside>
+
+  <footer id="contacts" class="site-footer">
+    <address>
+      <b>Адреса:</b> м. Київ, вул. Сагайдачного, 25, офіс 3<br>
+      <b>Телефони:</b> <a href="tel:+380441234567">+38 (044) 123-45-67</a>,
+      <a href="tel:+380671234567">+38 (067) 123-45-67</a><br>
+      <b>E-mail:</b> <a href="mailto:info@holka-nytka.ua">info@holka-nytka.ua</a>
+    </address>
+    <p class="copyright" style="letter-spacing: 0.5px;">&copy; 2026 Ательє «Голка &amp; Нитка». Усі права захищено.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Каталог сервісів ательє «Голка &amp; Нитка»">
+  <title>Каталог сервісів — Голка &amp; Нитка</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ===== Внутрішня таблиця стилів сторінки «Каталог сервісів» (Grid) ===== */
+
+    /* Блок назви та логотипа фіксований зверху */
+    .catalog-page .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    .catalog-page { padding-top: 104px; }
+    .site-header .home-btn { justify-self: end; }
+
+    .catalog-main { padding: 1.5rem 2rem; }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 1.8rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* Рамка темно-жовтого кольору: нижня межа суцільна середньої товщини, верхня — крапкова */
+    .service-card {
+      display: grid;
+      background: ivory;
+      border-top: 4px dotted darkgoldenrod;
+      border-bottom: medium solid darkgoldenrod;
+      box-shadow: 0 3px 10px rgba(60, 30, 10, .15);
+    }
+
+    .service-card article {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto auto;
+      padding: 1rem 1.2rem 1.2rem;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* При фокусуванні на фото — анімація до «чорно-білого зображення» */
+    .service-card img:focus {
+      animation: to-black-white 1.2s ease forwards;
+      box-shadow: 0 0 0 3px darkgoldenrod;
+    }
+    @keyframes to-black-white {
+      from { filter: grayscale(0%); }
+      to   { filter: grayscale(100%); }
+    }
+
+    .service-card h3 { margin: .7rem 0 .2rem; }
+    .service-desc { margin: 0; font-size: .92rem; }
+    .service-features { padding-left: 1.1rem; font-size: .9rem; }
+
+    /* «Тип тканини для пошиття» — більша вага та висота гліфів, похилий */
+    .fabric {
+      font-weight: 700;
+      font-size: 1.15em;
+      font-style: italic;
+      color: #7a1f2b;
+    }
+
+    .order-link {
+      justify-self: start;
+      padding: .4rem 1.2rem;
+      border: 2px solid darkgoldenrod;
+      border-radius: 20px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* Посилання в момент кліку — темно-зелений колір шрифта */
+    a:active,
+    .order-link:active,
+    .home-btn:active { color: darkgreen; }
+  </style>
+</head>
+<body class="catalog-page">
+
+  <header id="site-header" class="site-header">
+    <a href="index.html" class="brand" title="На головну">
+      <img src="images/logo.svg" alt="Логотип ательє «Голка та Нитка»" width="70" height="70">
+    </a>
+    <div class="brand-text">
+      <h1>Голка &amp; Нитка</h1>
+      <p class="slogan"><i>Каталог сервісів</i></p>
+    </div>
+    <a href="index.html" class="home-btn" role="button">На головну сторінку</a>
+  </header>
+
+  <main class="catalog-main">
+    <h2>Каталог сервісів ательє</h2>
+    <p class="catalog-intro">Оберіть сервіс, ознайомтеся з характеристиками та натисніть «Замовити», щоб залишити заявку.</p>
+    <ul class="catalog-grid">
+      <li class="service-card" id="service-1">
+        <article>
+          <img src="images/dress.svg" alt="Пошиття сукні" width="400" height="280" tabindex="0">
+          <h3>Пошиття сукні</h3>
+          <p class="service-desc">Повсякденні, ділові та вечірні сукні за індивідуальними мірками.</p>
+          <ul class="service-features">
+            <li><span class="fabric">Тип тканини для пошиття: Шовк, віскоза, креп</span></li>
+            <li>Термін виконання: 7 днів</li>
+            <li>Примірки: 2 примірки</li>
+            <li>Гарантія на шви: 6 місяців</li>
+            <li>Вартість: <data value="2 800 грн">2 800 грн</data></li>
+          </ul>
+          <a href="feedback.html" class="order-link">Замовити</a>
+        </article>
+      </li>
+      <li class="service-card" id="service-2">
+        <article>
+          <img src="images/wedding.svg" alt="Весільна сукня" width="400" height="280" tabindex="0">
+          <h3>Весільна сукня</h3>
+          <p class="service-desc">Ексклюзивні весільні сукні з корсетом, шлейфом і ручною вишивкою.</p>
+          <ul class="service-features">
+            <li><span class="fabric">Тип тканини для пошиття: Атлас, фатин, мереживо</span></li>
+            <li>Термін виконання: 30 днів</li>
+            <li>Примірки: 3–4 примірки</li>
+            <li>Гарантія на шви: 6 місяців</li>
+            <li>Вартість: <data value="від 15 000 грн">від 15 000 грн</data></li>
+          </ul>
+          <a href="feedback.html" class="order-link">Замовити</a>
+        </article>
+      </li>
+      <li class="service-card" id="service-3">
+        <article>
+          <img src="images/suit.svg" alt="Класичний чоловічий костюм" width="400" height="280" tabindex="0">
+          <h3>Класичний чоловічий костюм</h3>
+          <p class="service-desc">Двійка або трійка класичного чи сучасного крою.</p>
+          <ul class="service-features">
+            <li><span class="fabric">Тип тканини для пошиття: Італійська вовна</span></li>
+            <li>Термін виконання: 21 день</li>
+            <li>Примірки: 3 примірки</li>
+            <li>Гарантія на шви: 6 місяців</li>
+            <li>Вартість: <data value="9 500 грн">9 500 грн</data></li>
+          </ul>
+          <a href="feedback.html" class="order-link">Замовити</a>
+        </article>
+      </li>
+      <li class="service-card" id="service-4">
+        <article>
+          <img src="images/shirt.svg" alt="Сорочка на замовлення" width="400" height="280" tabindex="0">
+          <h3>Сорочка на замовлення</h3>
+          <p class="service-desc">Сорочки з монограмою, вибір коміра та манжет.</p>
+          <ul class="service-features">
+            <li><span class="fabric">Тип тканини для пошиття: Бавовна, поплін</span></li>
+            <li>Термін виконання: 5 днів</li>
+            <li>Примірки: 1 примірка</li>
+            <li>Гарантія на шви: 6 місяців</li>
+            <li>Вартість: <data value="1 400 грн">1 400 грн</data></li>
+          </ul>
+          <a href="feedback.html" class="order-link">Замовити</a>
+        </article>
+      </li>
+      <li class="service-card" id="service-5">
+        <article>
+          <img src="images/coat.svg" alt="Пальто" width="400" height="280" tabindex="0">
+          <h3>Пальто</h3>
+          <p class="service-desc">Демісезонні та зимові пальта з утепленою підкладкою.</p>
+          <ul class="service-features">
+            <li><span class="fabric">Тип тканини для пошиття: Кашемір, драп</span></li>
+            <li>Термін виконання: 25 днів</li>
+            <li>Примірки: 3 примірки</li>
+            <li>Гарантія на шви: 6 місяців</li>
+            <li>Вартість: <data value="8 000 грн">8 000 грн</data></li>
+          </ul>
+          <a href="feedback.html" class="order-link">Замовити</a>
+        </article>
+      </li>
+      <li class="service-card" id="service-6">
+        <article>
+          <img src="images/embroidery.svg" alt="Вишиванка" width="400" height="280" tabindex="0">
+          <h3>Вишиванка</h3>
+          <p class="service-desc">Сорочки з машинною або ручною вишивкою за етнічними мотивами.</p>
+          <ul class="service-features">
+            <li><span class="fabric">Тип тканини для пошиття: Льон, домоткане полотно</span></li>
+            <li>Термін виконання: 14 днів</li>
+            <li>Примірки: 1 примірка</li>
+            <li>Гарантія на шви: 6 місяців</li>
+            <li>Вартість: <data value="3 500 грн">3 500 грн</data></li>
+          </ul>
+          <a href="feedback.html" class="order-link">Замовити</a>
+        </article>
+      </li>
+      <li class="service-card" id="service-7">
+        <article>
+          <img src="images/school.svg" alt="Шкільна форма" width="400" height="280" tabindex="0">
+          <h3>Шкільна форма</h3>
+          <p class="service-desc">Комплекти шкільної форми для хлопчиків і дівчаток.</p>
+          <ul class="service-features">
+            <li><span class="fabric">Тип тканини для пошиття: Костюмна тканина, габардин</span></li>
+            <li>Термін виконання: 10 днів</li>
+            <li>Примірки: 1 примірка</li>
+            <li>Гарантія на шви: 6 місяців</li>
+            <li>Вартість: <data value="2 200 грн">2 200 грн</data></li>
+          </ul>
+          <a href="feedback.html" class="order-link">Замовити</a>
+        </article>
+      </li>
+      <li class="service-card" id="service-8">
+        <article>
+          <img src="images/curtains.svg" alt="Пошиття штор" width="400" height="280" tabindex="0">
+          <h3>Пошиття штор</h3>
+          <p class="service-desc">Штори, тюль, ламбрекени та покривала для оселі.</p>
+          <ul class="service-features">
+            <li><span class="fabric">Тип тканини для пошиття: Блекаут, льон, вуаль</span></li>
+            <li>Термін виконання: 7 днів</li>
+            <li>Примірки: Замір вдома</li>
+            <li>Гарантія на шви: 6 місяців</li>
+            <li>Вартість: <data value="від 600 грн/м">від 600 грн/м</data></li>
+          </ul>
+          <a href="feedback.html" class="order-link">Замовити</a>
+        </article>
+      </li>
+      <li class="service-card" id="service-9">
+        <article>
+          <img src="images/repair.svg" alt="Ремонт та підгонка одягу" width="400" height="280" tabindex="0">
+          <h3>Ремонт та підгонка одягу</h3>
+          <p class="service-desc">Підшивання, заміна блискавки, вшивання, реставрація.</p>
+          <ul class="service-features">
+            <li><span class="fabric">Тип тканини для пошиття: Тканина клієнта</span></li>
+            <li>Термін виконання: 1–2 дні</li>
+            <li>Примірки: Без примірки</li>
+            <li>Гарантія на шви: 6 місяців</li>
+            <li>Вартість: <data value="від 150 грн">від 150 грн</data></li>
+          </ul>
+          <a href="feedback.html" class="order-link">Замовити</a>
+        </article>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <p><a href="index.html">&larr; Повернутися на головну сторінку</a></p>
+    <p class="copyright">&copy; 2026 Ательє «Голка &amp; Нитка»</p>
+  </footer>
+
+</body>
+</html>

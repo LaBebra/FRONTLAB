@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="280" viewBox="0 0 400 280">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3c6d3"/><stop offset="1" stop-color="#8e2c48"/></linearGradient>
+<pattern id="p" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M0 12h24M12 0v24" stroke="#ffffff" stroke-opacity=".12" stroke-width="2"/></pattern></defs>
+<rect width="400" height="280" fill="url(#g)"/><rect width="400" height="280" fill="url(#p)"/>
+<rect x="14" y="14" width="372" height="252" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="2" stroke-dasharray="10 6"/>
+<text x="200.0" y="160" font-size="110" text-anchor="middle" font-family="Segoe UI Emoji, Noto Color Emoji">👗</text>
+<text x="200.0" y="238" font-size="24" fill="#fff" text-anchor="middle" font-family="Georgia, serif">Пошиття суконь</text>
+</svg>

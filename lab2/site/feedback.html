@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Зворотній зв’язок з ательє «Голка &amp; Нитка»">
+  <title>Зворотній зв’язок — Голка &amp; Нитка</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ===== Внутрішня таблиця стилів сторінки «Зворотній зв’язок» (Flexbox) ===== */
+    .feedback-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .site-header { display: flex; justify-content: space-between; }
+    .site-header .brand-text { flex-grow: 1; }
+
+    /* Flex-контейнер */
+    .feedback-main {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: flex-start;
+      align-content: flex-start;
+      gap: 2rem;
+      flex-grow: 1;
+      padding: 2rem;
+    }
+
+    /* Flex-елементи */
+    .feedback-info {
+      order: 2;
+      flex: 1 1 260px;
+      max-width: 360px;
+      align-self: center;
+      padding: 1.5rem;
+      background: rgb(122, 31, 43);
+      color: ivory;
+      border-radius: 6px;
+    }
+    .feedback-info h2 { color: #c9a227; }
+
+    .feedback-form {
+      order: 1;
+      flex: 2 1 460px;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+      padding: 1.8rem 2rem;
+      background: ivory;
+      border: 1px solid #c9a227;
+      box-shadow: 0 3px 10px rgba(60, 30, 10, .15);
+    }
+
+    fieldset.personal {
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      border: 2px solid #7a1f2b;
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+    }
+    legend { padding: 0 .5rem; font-size: 1.15rem; }
+
+    .field {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .5rem;
+      margin: 0;
+    }
+    .field label { flex: 0 0 200px; font-weight: 600; }
+    .field input, .field select, .field textarea {
+      flex: 1 1 220px;
+      padding: .5rem .7rem;
+      font: inherit;
+      border: 1px solid #b8a27a;
+      border-radius: 4px;
+      background: white;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: 2px solid hsl(45, 67%, 47%);
+    }
+    .field textarea {
+      align-self: flex-start;
+      min-height: 100px;
+      max-height: 220px;
+      max-width: 100%;
+      resize: vertical;
+    }
+
+    .consent { flex-wrap: nowrap; align-self: flex-start; }
+    .consent input { flex: 0 0 auto; width: 18px; height: 18px; }
+    .consent label { flex: 1 1 auto; font-weight: 400; }
+
+    .form-buttons { display: flex; justify-content: flex-end; gap: 1rem; margin: 0; }
+    .form-buttons button {
+      padding: .6rem 1.6rem;
+      font: 600 1rem "Montserrat", sans-serif;
+      border: 2px solid #7a1f2b;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color .3s, color .3s;
+    }
+    button[type="submit"] { order: 2; flex-grow: 1; max-width: 240px; background: #7a1f2b; color: white; }
+    button[type="reset"]  { order: 1; flex-shrink: 1; background: transparent; color: #7a1f2b; }
+    button[type="reset"]:hover { background: #7a1f2b; color: white; }
+
+    .feedback-page .site-footer { margin-top: auto; }
+  </style>
+</head>
+<body class="feedback-page">
+
+  <header id="site-header" class="site-header">
+    <a href="index.html" class="brand" title="На головну">
+      <img src="images/logo.svg" alt="Логотип ательє «Голка та Нитка»" width="70" height="70">
+    </a>
+    <div class="brand-text">
+      <h1>Голка &amp; Нитка</h1>
+      <p class="slogan"><i>Зворотній зв’язок</i></p>
+    </div>
+    <a href="index.html" class="home-btn" role="button">На головну сторінку</a>
+  </header>
+
+  <main class="feedback-main">
+    <section class="feedback-info">
+      <h2>Напишіть нам</h2>
+      <p>Маєте пропозицію щодо співпраці, зауваження до якості пошиття чи помітили помилку на сайті?
+         Заповніть форму, і менеджер ательє відповість вам протягом одного робочого дня.</p>
+    </section>
+
+    <form class="feedback-form" action="#" method="post">
+      <fieldset class="personal">
+        <legend>Персональна інформація</legend>
+        <p class="field">
+          <label for="fullname">Прізвище та ім’я:</label>
+          <input type="text" id="fullname" name="fullname" placeholder="Шевченко Олена" required minlength="3" maxlength="60">
+        </p>
+        <p class="field">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" placeholder="olena@example.com" required>
+        </p>
+        <p class="field">
+          <label for="age">Вік:</label>
+          <input type="number" id="age" name="age" min="14" max="100" placeholder="25" required>
+        </p>
+      </fieldset>
+
+      <p class="field">
+        <label for="purpose">Мета зворотнього зв’язку:</label>
+        <select id="purpose" name="purpose" required>
+          <option value="" disabled selected>— оберіть мету —</option>
+          <option value="cooperation">Співпраця</option>
+          <option value="complaint">Скарга на неякісний пошив</option>
+          <option value="suggestion">Пропозиція</option>
+          <option value="error">Наявність помилки</option>
+        </select>
+      </p>
+
+      <p class="field">
+        <label for="details">Детально:</label>
+        <textarea id="details" name="details" rows="6" cols="50" maxlength="500"
+                  placeholder="Опишіть ваше звернення (до 500 символів)"></textarea>
+      </p>
+
+      <p class="field consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">Я надаю згоду на обробку моїх персональних даних</label>
+      </p>
+
+      <p class="form-buttons">
+        <button type="submit">Надіслати</button>
+        <button type="reset">Очистити форму</button>
+      </p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <p><a href="index.html">&larr; Повернутися на головну сторінку</a></p>
+    <p class="copyright">&copy; 2026 Ательє «Голка &amp; Нитка»</p>
+  </footer>
+
+</body>
+</html>
