@@ -1,0 +1,330 @@
+/* =========================================================
+   ЛР4: стилі для динамічних елементів, якими керує JavaScript
+   ========================================================= */
+
+/* ---------- 1. Головна: предмети ательє на фоні шапки ---------- */
+.site-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.header-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.decor-item {
+  position: absolute;
+  width: auto;
+  opacity: 0;
+  -webkit-transition: opacity 0.8s ease;
+  transition: opacity 0.8s ease;
+}
+
+.decor-item.visible {
+  opacity: 0.45;
+}
+
+/* ---------- 5. Головна: вертикальне меню праворуч (ширина екрану <= 768 px) ---------- */
+.nav-toggle {
+  display: none;
+}
+
+body.nav-vertical .main-nav {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  left: auto;
+  z-index: 200;
+  border: 1px solid var(--gold);
+  border-right: 0;
+  border-radius: 12px 0 0 12px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+body.nav-vertical .main-nav ul {
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+  padding: 0.7rem;
+}
+
+body.nav-vertical .main-nav.open ul {
+  display: flex;
+}
+
+body.nav-vertical .nav-toggle {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font: 600 0.9rem "Montserrat", sans-serif;
+  color: white;
+  background: var(--burgundy);
+  border: 0;
+  border-radius: 11px 0 0 11px;
+  cursor: pointer;
+}
+
+body.nav-vertical .main-nav.open .nav-toggle {
+  border-radius: 11px 0 0 0;
+}
+
+body.nav-vertical .nav-btn {
+  display: block;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* ---------- 2. Каталог: меню з випадаючими підменю ---------- */
+.catalog-menu {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 104px;
+  z-index: 90;
+  margin: 0 0 1.5rem;
+  background: ivory;
+  border: 1px solid var(--gold);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.catalog-menu > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem 1.5rem;
+  margin: 0;
+  padding: 0.4rem 1rem;
+  list-style: none;
+}
+
+.catalog-menu .menu-item {
+  position: relative;
+}
+
+.menu-trigger {
+  padding: 0.5rem 0.4rem;
+  font: 600 0.95rem "Montserrat", sans-serif;
+  color: var(--burgundy);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu-trigger::after {
+  content: " \25BE";
+  display: inline-block;
+  -webkit-transition: -webkit-transform 0.25s;
+  transition: transform 0.25s;
+}
+
+.menu-trigger[aria-expanded="true"]::after {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  min-width: 250px;
+  margin: 0;
+  padding: 0.4rem 0;
+  list-style: none;
+  background: white;
+  border: 1px solid var(--gold);
+  border-top: 3px solid var(--burgundy);
+  box-shadow: 0 8px 20px rgba(60, 30, 10, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate(-50%, -8px);
+  transform: translate(-50%, -8px);
+  -webkit-transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+}
+
+.menu-item.open .submenu {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.submenu a {
+  display: block;
+  padding: 0.35rem 1rem;
+  font-size: 0.9rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.submenu a:hover,
+.submenu a:focus {
+  background: hsl(42, 55%, 92%);
+  color: var(--burgundy);
+}
+
+.submenu .sub-group {
+  padding: 0.35rem 1rem 0.1rem;
+  font-weight: 600;
+  color: var(--burgundy);
+}
+
+.submenu .sub-group ~ li a {
+  padding-left: 1.6rem;
+}
+
+.service-card.highlight {
+  -webkit-animation: card-flash 1.6s ease;
+  animation: card-flash 1.6s ease;
+}
+
+@-webkit-keyframes card-flash {
+  0%, 100% { box-shadow: 0 3px 10px rgba(60, 30, 10, 0.15); }
+  40% { box-shadow: 0 0 0 5px darkgoldenrod; }
+}
+
+@keyframes card-flash {
+  0%, 100% { box-shadow: 0 3px 10px rgba(60, 30, 10, 0.15); }
+  40% { box-shadow: 0 0 0 5px darkgoldenrod; }
+}
+
+/* ---------- 3. Каталог: фото стає фліп-картою ---------- */
+.flip {
+  -webkit-perspective: 900px;
+  perspective: 900px;
+  aspect-ratio: 400 / 280;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.7s ease;
+  transition: transform 0.7s ease;
+}
+
+.flip.flipped .flip-inner {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 4px;
+}
+
+.flip-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.8rem 1rem;
+  overflow: auto;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: ivory;
+  background: linear-gradient(135deg, #7a1f2b, #4d1119);
+  border: 2px solid darkgoldenrod;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.flip-back h4 {
+  margin: 0 0 0.3rem;
+  font-family: "Playfair Display", serif;
+  color: #e8c35a;
+}
+
+.flip-back ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+/* ---------- 4. Зворотній зв'язок: поле «Детально» та підказка ---------- */
+.field.details {
+  position: relative;
+}
+
+.field textarea {
+  -webkit-transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.field textarea.hovered {
+  background-color: hsl(45, 100%, 96%);
+  border: 2px solid darkgoldenrod;
+  box-shadow: 0 0 12px 2px rgba(184, 134, 11, 0.45);
+}
+
+.tooltip {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 16px);
+  z-index: 10;
+  width: 250px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: white;
+  background: #7a1f2b;
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  -webkit-transform: translate(-6px, -50%);
+  transform: translate(-6px, -50%);
+  -webkit-transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  margin-top: -8px;
+  border: 8px solid transparent;
+  border-left: 0;
+  border-right-color: #7a1f2b;
+}
+
+.tooltip.show {
+  opacity: 1;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+/* На вузьких екранах підказка з'являється під полем */
+@media (max-width: 1100px) {
+  .tooltip {
+    top: 100%;
+    left: auto;
+    right: 0;
+    margin-top: 10px;
+    -webkit-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+  .tooltip.show {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .tooltip::before {
+    top: -8px;
+    left: auto;
+    right: 30px;
+    margin-top: 0;
+    border: 8px solid transparent;
+    border-top: 0;
+    border-bottom-color: #7a1f2b;
+  }
+}

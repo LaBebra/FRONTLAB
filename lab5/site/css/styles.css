@@ -1,0 +1,444 @@
+/* =========================================================
+   Ательє «Голка & Нитка» - зовнішня таблиця стилів
+   Стиль веб-дизайну: КЛАСИЧНИЙ (кремовий фон, бордо, золото,
+   шрифт із засічками для заголовків, симетрія та рамки)
+   ========================================================= */
+
+/* Два шрифти (Playfair Display, Montserrat) підключено в HTML через <link rel="preconnect"> + <link>,
+   а не через @import: так браузер завантажує їх паралельно (ЛР5, швидкодія). */
+
+/* ЛР5: резервні шрифти з підігнаними метриками. Поки вебшрифти завантажуються,
+   текст показується системним шрифтом того самого розміру, тому після заміни
+   шрифту макет не зсувається (метрика CLS). */
+@font-face {
+  font-family: "Playfair Fallback";
+  src: local("Times New Roman");
+  ascent-override: 97.25%;
+  descent-override: 22.56%;
+  line-gap-override: 0%;
+  size-adjust: 111.26%;
+}
+@font-face {
+  font-family: "Montserrat Fallback";
+  src: local("Arial");
+  ascent-override: 85.79%;
+  descent-override: 22.25%;
+  line-gap-override: 0%;
+  size-adjust: 112.83%;
+}
+
+/* Кольори задаються чотирма способами: name, HEX, RGB, HSL */
+:root {
+  --burgundy: #7a1f2b;                 /* HEX  */
+  --gold: rgb(201, 162, 39);           /* RGB  */
+  --cream: hsl(42, 55%, 94%);          /* HSL  */
+  --paper: ivory;                      /* name */
+  --ink: #2b2118;
+  --shadow: rgba(60, 30, 10, 0.18);
+}
+
+/* Універсальний селектор */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;    /* iOS Safari не збільшує шрифт при повороті */
+  text-size-adjust: 100%;
+}
+
+/* ЛР5: усі зображення гнучкі */
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Селектор елементу */
+body {
+  margin: 0;
+  font-family: "Montserrat", "Montserrat Fallback", Arial, sans-serif;
+  color: var(--ink);
+  line-height: 1.6;
+  /* Фон: колір + візерунок-градієнт «тканина» */
+  background-color: var(--cream);
+  background-image:
+    repeating-linear-gradient(45deg, rgba(122, 31, 43, 0.03) 0 2px, transparent 2px 14px),
+    repeating-linear-gradient(-45deg, rgba(122, 31, 43, 0.03) 0 2px, transparent 2px 14px);
+}
+
+h1, h2, h3, legend {
+  font-family: "Playfair Display", "Playfair Fallback", Georgia, serif;
+  color: var(--burgundy);
+}
+
+h2 {
+  margin-top: 0;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 0.3rem;
+}
+
+/* Комбінатор «сусідній брат» (+): абзац одразу після заголовка h2 */
+h2 + p {
+  font-size: 1.05rem;
+}
+
+a {
+  color: var(--burgundy);
+}
+
+/* Селектори атрибутів */
+a[target="_blank"]::after {          /* [атрибут="значення"] + псевдоелемент */
+  content: " \2197";
+  font-size: 0.8em;
+}
+
+a[href^="tel:"] {                    /* [атрибут^="значення"] */
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+a[href*="mailto"] {                  /* [атрибут*="значення"] */
+  font-style: italic;
+}
+
+::selection {
+  background: var(--gold);
+  color: white;
+}
+
+/* ---------- Шапка сайту ---------- */
+.site-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(90deg, var(--burgundy), #4d1119);
+  border-bottom: 4px double var(--gold);
+  box-shadow: 0 4px 12px var(--shadow);
+  z-index: 100;
+}
+
+/* Дочірній комбінатор (>) */
+.site-header > .brand-text h1 {
+  margin: 0;
+  color: var(--paper);
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+.site-header .slogan {               /* комбінатор-нащадок (пробіл) */
+  margin: 0;
+  color: var(--gold);
+}
+
+.brand img {
+  display: block;
+  animation: needle-swing 6s ease-in-out infinite;
+}
+
+/* Анімація логотипа */
+@keyframes needle-swing {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-8deg); }
+  75%      { transform: rotate(8deg); }
+}
+
+/* Кнопки акаунта: 2D-трансформація при наведенні */
+.account-buttons button,
+.home-btn {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  font: 600 0.9rem "Montserrat", "Montserrat Fallback", sans-serif;
+  color: var(--burgundy);
+  background: var(--paper);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.account-buttons button:hover,
+.home-btn:hover {
+  transform: scale(1.06) rotate(-2deg);
+}
+
+#btn-register {                      /* селектор id */
+  background: var(--gold);
+  color: #2b0a0f;                    /* ЛР5: контраст 7:1 замість 2,3:1 */
+}
+
+/* ---------- Підвал ---------- */
+.site-footer {
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: var(--paper);
+  background: #3a0f15;
+  border-top: 4px double var(--gold);
+}
+
+.site-footer a {
+  color: var(--gold);
+}
+
+.copyright {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* =========================================================
+   ГОЛОВНА СТОРІНКА (Grid-розмітка)
+   ========================================================= */
+.home-page {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(16rem, 1fr);
+  grid-template-areas:
+    "nav    nav"
+    "main   aside"
+    "footer footer";
+  gap: 1.5rem;
+  padding-top: calc(var(--header-h, 7.8rem) + 1rem); /* місце під абсолютно позиціоновану шапку */
+}
+
+/* Блок назви та логотипа - абсолютно позиціонований з 0 відступом зверху */
+.home-page .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 7.8rem;
+}
+
+/* Навігація «прилипає» до верху під час прокручування */
+.main-nav {
+  grid-area: nav;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-block: 1px solid var(--gold);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0.7rem;
+  list-style: none;
+}
+
+/* Перехід між двома стилями (5 властивостей) */
+.nav-btn {
+  display: inline-block;
+  padding: 0.5rem 1.4rem;
+  font-family: "Montserrat", "Montserrat Fallback", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--burgundy);
+  background-color: transparent;
+  border: 2px solid var(--burgundy);
+  border-radius: 30px;
+  transition: background-color 0.4s, color 0.4s, box-shadow 0.4s,
+              border-color 0.4s, letter-spacing 0.4s;
+}
+
+.nav-btn:hover,
+.nav-btn:focus {
+  color: white;
+  background-color: var(--burgundy);
+  border-color: var(--gold);
+  box-shadow: 0 6px 14px rgba(122, 31, 43, 0.45);
+  letter-spacing: 1px;
+}
+
+.home-main {
+  grid-area: main;
+  position: relative;                /* третє значення position */
+  display: grid;
+  gap: 1.5rem;
+  padding-left: 2rem;
+}
+
+/* Блок мети: без зовнішніх відступів, але з внутрішніми */
+.goal-block {
+  margin: 0;
+  padding: 2rem 2.5rem;
+  background: var(--paper);
+  border: 1px solid var(--gold);
+  box-shadow: 0 3px 10px var(--shadow);
+}
+
+/* Перед описом мети - емодзі, що ілюструє сервіс */
+.goal-text::before {
+  content: "🧵✂️👗 ";
+  font-size: 1.6rem;
+}
+
+.goal-block ol {
+  padding-left: 2.5rem;
+}
+
+.goal-block ol li::marker {
+  color: var(--burgundy);
+  font-family: "Playfair Display", "Playfair Fallback", serif;
+  font-weight: 800;
+}
+
+.styled-sentence {
+  padding: 0.8rem 1rem;
+  background: hsla(42, 80%, 60%, 0.15);
+  border-left: 4px solid var(--gold);
+}
+
+.styled-sentence span {
+  font-family: "Playfair Display", "Playfair Fallback", serif;
+  color: var(--burgundy);
+  font-weight: 800;
+}
+
+/* Таблиця сервісів: при наведенні зміщується вниз на 2% висоти області перегляду */
+.services-block {
+  padding: 1.5rem;
+  background: var(--paper);
+  border: 1px solid var(--gold);
+  box-shadow: 0 3px 10px var(--shadow);
+  transition: transform 0.35s ease;
+}
+
+.services-block:hover {
+  transform: translateY(2vh);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+caption {
+  caption-side: top;
+  padding-bottom: 0.6rem;
+  font-style: italic;
+}
+
+th, td {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid darkgoldenrod;
+  text-align: center;
+}
+
+thead th {
+  color: white;
+  background: var(--burgundy);
+}
+
+tbody tr:nth-child(even) {
+  background: hsl(42, 55%, 90%);
+}
+
+tfoot td {
+  font-weight: 600;
+  background: var(--gold);
+  color: #2b0a0f;                    /* ЛР5: достатній контраст */
+}
+
+/* Бічна панель з найбільшим обсягом тексту - смуга прокручування */
+.about-aside {
+  grid-area: aside;
+  max-height: 32.5rem;
+  margin-right: 2rem;
+  padding: 1.2rem 1.4rem;
+  overflow-y: auto;                  /* смуга з’являється лише при переповненні */
+  background: var(--paper);
+  border: 1px solid var(--gold);
+  box-shadow: 0 3px 10px var(--shadow);
+}
+
+/* Обтікання (float) */
+.about-aside figure {
+  float: left;
+  width: 130px;
+  margin: 0.3rem 1rem 0.5rem 0;
+}
+
+.about-aside figure img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--gold);
+}
+
+.about-aside figcaption {
+  font-size: 0.75rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Загальний комбінатор братів (~): усі абзаци після h3 в aside */
+.about-aside h3 ~ p {
+  text-align: left;
+  hyphens: auto;
+  font-size: 0.92rem;
+}
+
+.home-page .site-footer {
+  grid-area: footer;
+}
+
+/* Адреса: при наведенні через 2 с розмір тексту збільшується на 20 % */
+address {
+  font-style: normal;
+  font-size: 1rem;
+  transition: font-size 0.5s ease 2s;
+}
+
+address:hover {
+  font-size: 1.2rem;
+}
+
+/* =========================================================
+   СТОРІНКА ВІДГУКІВ (Grid)
+   ========================================================= */
+.reviews-page,
+.catalog-page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.reviews-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.reviews-main h2 {
+  grid-column: 1 / -1;
+}
+
+.review {
+  padding: 1.2rem 1.5rem;
+  background: var(--paper);
+  border: 1px solid var(--gold);
+  border-top: 5px solid var(--burgundy);
+}
+
+.review .rating {
+  margin: 0;
+  color: var(--gold);
+  font-size: 1.3rem;
+}
+
+.review blockquote {
+  margin: 0.6rem 0;
+  font-style: italic;
+}
+
+/* Адаптивність: див. css/responsive.css (брейкпоінти 1440 / 1024 / 768 / 480 px) */

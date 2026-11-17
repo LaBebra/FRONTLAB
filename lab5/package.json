@@ -1,0 +1,23 @@
+{
+  "name": "frontlab-lab5",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ЛР5: збірка CSS з вендорними префіксами (Autoprefixer) та мінімізацією (cssnano)",
+  "scripts": {
+    "build": "node build-css.js"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Edge versions",
+    "last 2 Firefox versions",
+    "Firefox ESR",
+    "last 2 Opera versions",
+    "Safari >= 12",
+    "iOS >= 12"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.4.49"
+  }
+}

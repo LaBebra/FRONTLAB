@@ -1,0 +1,184 @@
+/* =========================================================
+   ЛР5: адаптивність, брейкпоінт-макети
+   Підхід desktop-first, брейкпоінти:
+     >= 1440 px  великі монітори
+     <= 1024 px  планшети в альбомній орієнтації, малі ноутбуки
+     <=  768 px  планшети в портретній орієнтації
+     <=  480 px  смартфони
+   ========================================================= */
+
+/* Початкова висота абсолютно позиціонованої шапки Головної для кожного брейкпоінта.
+   Значення заміряні; js/common.js потім уточнює їх, тому зсув макета мінімальний. */
+:root { --header-h: 7.8rem; }
+@media (max-width: 64em) { :root { --header-h: 7.9rem; } }
+@media (max-width: 48em) { :root { --header-h: 9.45rem; } }
+@media (max-width: 30em) { :root { --header-h: 9.15rem; } }
+
+/* Меню каталогу будується скриптом, тому заздалегідь резервуємо його висоту
+   (заміряні значення), щоб картки не зсувалися після появи меню. */
+.catalog-menu { min-height: 3.2rem; }
+@media (max-width: 48em) { .catalog-menu { min-height: 5.75rem; } }
+@media (max-width: 30em) { .catalog-menu { min-height: 10.65rem; } }
+
+/* ---------- >= 1440 px: великі монітори ---------- */
+@media (min-width: 90em) {
+  html { font-size: 112.5%; }
+
+  .catalog-main,
+  .reviews-main,
+  .feedback-main {
+    width: 100%;
+    max-width: 100rem;
+    margin-inline: auto;
+  }
+}
+
+/* ---------- <= 1024 px ---------- */
+@media (max-width: 64em) {
+  .home-page {
+    grid-template-columns: minmax(0, 2fr) minmax(14rem, 1fr);
+    gap: 1.2rem;
+  }
+  .site-header { padding: 0.7rem 1.2rem; gap: 0.8rem; }
+  .site-header > .brand-text h1 { font-size: 1.9rem; }
+  .home-main { padding-left: 1.2rem; }
+  .about-aside { margin-right: 1.2rem; }
+  .catalog-main { padding: 1.2rem; }
+}
+
+/* ---------- <= 768 px ---------- */
+@media (max-width: 48em) {
+  /* Головна: одна колонка */
+  .home-page {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "nav" "main" "aside" "footer";
+  }
+  .site-header { grid-template-columns: auto minmax(0, 1fr); }
+  .brand img { width: 3.75rem; height: 3.75rem; }
+  .site-header > .brand-text h1 { font-size: 1.6rem; }
+  .site-header .slogan { font-size: 0.85rem; line-height: 1.3; }
+
+  .account-buttons {
+    grid-column: 1 / -1;
+    display: -webkit-box;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .account-buttons button {
+    flex: 1;
+    margin: 0;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .home-main { padding: 0 1rem; }
+  .goal-block { padding: 1.2rem; }
+  .services-block { padding: 1rem; overflow-x: auto; }
+  .about-aside { margin: 0 1rem; max-height: 26rem; }
+  .main-nav ul { flex-wrap: wrap; }
+  .nav-btn { padding: 0.45rem 1rem; font-size: 0.9rem; }
+
+  /* Каталог, відгуки */
+  .catalog-main,
+  .reviews-main { padding: 1rem; }
+
+  /* Зворотній зв'язок: форма і довідка одна під одною */
+  .feedback-main {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: 1.2rem;
+  }
+  .feedback-form,
+  .feedback-info {
+    max-width: none;
+    flex-basis: auto;
+  }
+  .feedback-info { order: 0; align-self: stretch; }
+  .field label { flex-basis: 100%; }
+}
+
+/* ---------- <= 480 px: смартфони ---------- */
+@media (max-width: 30em) {
+  body { line-height: 1.5; }
+
+  .site-header { padding: 0.6rem 0.8rem; gap: 0.6rem; }
+  .brand img { width: 3rem; height: 3rem; }
+  .site-header > .brand-text h1 { font-size: 1.35rem; }
+  .site-header .slogan { font-size: 0.75rem; }
+  .home-btn {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    flex: 1 1 100%;                  /* для шапки на Flexbox (Зворотній зв'язок) */
+    margin: 0;
+    text-align: center;
+  }
+  .feedback-page .site-header { flex-wrap: wrap; }
+  .brand { flex-shrink: 0; }
+  .account-buttons button { font-size: 0.78rem; }
+
+  h2 { font-size: 1.3rem; }
+  .goal-block { padding: 1rem; }
+  .goal-block ol { padding-left: 1.8rem; }
+  table { font-size: 0.8rem; }
+  th, td { padding: 0.35rem 0.4rem; }
+
+  /* Меню каталогу: пункти один під одним, підменю розкривається всередині */
+  .catalog-menu > ul {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.3rem 0.6rem;
+  }
+  .menu-trigger { width: 100%; text-align: left; }
+  .submenu {
+    position: static;
+    display: none;
+    min-width: 0;
+    box-shadow: none;
+    -webkit-transform: none;
+    transform: none;
+  }
+  .menu-item.open .submenu {
+    display: block;
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  .catalog-intro { font-size: 0.9rem; }
+
+  .feedback-form { padding: 1.2rem 1rem; }
+  fieldset.personal { padding: 0.8rem; }
+  .form-buttons { flex-direction: column-reverse; }
+  .form-buttons button { max-width: none; width: 100%; }
+
+  .tooltip { width: 100%; max-width: none; }
+}
+
+/* Вертикальне меню праворуч вмикає js/home.js (клас .nav-vertical), а цей медіазапит
+   дублює його положення ще до виконання скрипта, щоб вміст не зсувався (CLS). */
+@media (max-width: 48em) {
+  .home-page .main-nav {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    left: auto;
+    z-index: 200;
+    border: 1px solid var(--gold);
+    border-right: 0;
+    border-radius: 12px 0 0 12px;
+    transform: translateY(-50%);
+  }
+  .home-page .main-nav ul { display: none; }
+  .home-page .main-nav.open ul { display: flex; }
+}
+
+/* ---------- Користувачі, які вимкнули анімацію в ОС ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    -webkit-transition-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
